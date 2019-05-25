@@ -1,15 +1,15 @@
 package com.macro.mall.common.api;
 
 /**
- * 枚举了一些常用API操作码
+ * 鏋氫妇浜嗕竴浜涘父鐢ˋPI鎿嶄綔鐮�
  * Created by macro on 2019/4/19.
  */
 public enum ResultCode implements IErrorCode {
-    SUCCESS(200, "操作成功"),
-    FAILED(500, "操作失败"),
-    VALIDATE_FAILED(404, "参数检验失败"),
-    UNAUTHORIZED(401, "暂未登录或token已经过期"),
-    FORBIDDEN(403, "没有相关权限");
+    SUCCESS(200, "鎿嶄綔鎴愬姛"),
+    FAILED(500, "鎿嶄綔澶辫触"),
+    VALIDATE_FAILED(404, "鍙傛暟妫�楠屽け璐�"),
+    UNAUTHORIZED(401, "鏆傛湭鐧诲綍鎴杢oken宸茬粡杩囨湡"),
+    FORBIDDEN(403, "娌℃湁鐩稿叧鏉冮檺");
     private long code;
     private String message;
 
