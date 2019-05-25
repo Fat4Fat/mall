@@ -1,5 +1,12 @@
 package com.macro.mall.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.github.pagehelper.PageHelper;
 import com.macro.mall.dao.PmsProductCategoryAttributeRelationDao;
 import com.macro.mall.dao.PmsProductCategoryDao;
@@ -8,15 +15,13 @@ import com.macro.mall.dto.PmsProductCategoryWithChildrenItem;
 import com.macro.mall.mapper.PmsProductCategoryAttributeRelationMapper;
 import com.macro.mall.mapper.PmsProductCategoryMapper;
 import com.macro.mall.mapper.PmsProductMapper;
-import com.macro.mall.model.*;
+import com.macro.mall.model.PmsProduct;
+import com.macro.mall.model.PmsProductCategory;
+import com.macro.mall.model.PmsProductCategoryAttributeRelation;
+import com.macro.mall.model.PmsProductCategoryAttributeRelationExample;
+import com.macro.mall.model.PmsProductCategoryExample;
+import com.macro.mall.model.PmsProductExample;
 import com.macro.mall.service.PmsProductCategoryService;
-import org.apache.commons.collections.CollectionUtils;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * PmsProductCategoryService实现类
@@ -44,8 +49,8 @@ public class PmsProductCategoryServiceImpl implements PmsProductCategoryService 
         int count = productCategoryMapper.insertSelective(productCategory);
         //创建筛选属性关联
         List<Long> productAttributeIdList = pmsProductCategoryParam.getProductAttributeIdList();
-        if(!CollectionUtils.isEmpty(productAttributeIdList)){
-            insertRelationList(productCategory.getId(), productAttributeIdList);
+        if (productAttributeIdList != null && productAttributeIdList.size() > 0) {
+        	insertRelationList(productCategory.getId(), productAttributeIdList);
         }
         return count;
     }
@@ -79,12 +84,13 @@ public class PmsProductCategoryServiceImpl implements PmsProductCategoryService 
         example.createCriteria().andProductCategoryIdEqualTo(id);
         productMapper.updateByExampleSelective(product,example);
         //同时更新筛选属性的信息
-        if(!CollectionUtils.isEmpty(pmsProductCategoryParam.getProductAttributeIdList())){
-            PmsProductCategoryAttributeRelationExample relationExample = new PmsProductCategoryAttributeRelationExample();
-            relationExample.createCriteria().andProductCategoryIdEqualTo(id);
-            productCategoryAttributeRelationMapper.deleteByExample(relationExample);
-            insertRelationList(id,pmsProductCategoryParam.getProductAttributeIdList());
-        }else{
+        List<Long> productAttributeIdList = pmsProductCategoryParam.getProductAttributeIdList();
+        if (productAttributeIdList != null && productAttributeIdList.size() > 0) {
+        	PmsProductCategoryAttributeRelationExample relationExample = new PmsProductCategoryAttributeRelationExample();
+        	relationExample.createCriteria().andProductCategoryIdEqualTo(id);
+        	productCategoryAttributeRelationMapper.deleteByExample(relationExample);
+        	insertRelationList(id,pmsProductCategoryParam.getProductAttributeIdList());
+        } else {
             PmsProductCategoryAttributeRelationExample relationExample = new PmsProductCategoryAttributeRelationExample();
             relationExample.createCriteria().andProductCategoryIdEqualTo(id);
             productCategoryAttributeRelationMapper.deleteByExample(relationExample);
