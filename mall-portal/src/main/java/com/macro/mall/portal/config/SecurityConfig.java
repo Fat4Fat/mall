@@ -1,9 +1,5 @@
 package com.macro.mall.portal.config;
 
-import com.macro.mall.model.UmsMember;
-import com.macro.mall.portal.component.*;
-import com.macro.mall.portal.domain.MemberDetails;
-import com.macro.mall.portal.service.UmsMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,11 +8,19 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import com.macro.mall.model.UmsMember;
+import com.macro.mall.portal.component.GoAccessDeniedHandler;
+import com.macro.mall.portal.component.GoAuthenticationEntryPoint;
+import com.macro.mall.portal.component.GoAuthenticationFailureHandler;
+import com.macro.mall.portal.component.GoAuthenticationSuccessHandler;
+import com.macro.mall.portal.component.GoLogoutSuccessHandler;
+import com.macro.mall.portal.domain.MemberDetails;
+import com.macro.mall.portal.service.UmsMemberService;
 
 /**
  * SpringSecurity的配置
@@ -93,18 +97,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
+    @Override
+	@Bean
     public UserDetailsService userDetailsService() {
         //获取登录用户信息
-        return new UserDetailsService() {
-            @Override
-            public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-                UmsMember member = memberService.getByUsername(username);
-                if(member!=null){
-                    return new MemberDetails(member);
-                }
-                throw new UsernameNotFoundException("用户名或密码错误");
-            }
-        };
+        return username -> {
+		    UmsMember member = memberService.getByUsername(username);
+		    if(member!=null){
+		        return new MemberDetails(member);
+		    }
+		    throw new UsernameNotFoundException("用户名或密码错误");
+		};
     }
 }

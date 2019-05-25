@@ -1,9 +1,7 @@
 package com.macro.mall.demo.config;
 
-import com.macro.mall.demo.bo.AdminUserDetails;
-import com.macro.mall.mapper.UmsAdminMapper;
-import com.macro.mall.model.UmsAdmin;
-import com.macro.mall.model.UmsAdminExample;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,12 +9,14 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import java.util.List;
+import com.macro.mall.demo.bo.AdminUserDetails;
+import com.macro.mall.mapper.UmsAdminMapper;
+import com.macro.mall.model.UmsAdmin;
+import com.macro.mall.model.UmsAdminExample;
 
 /**
  * SpringSecurity的配置
@@ -61,20 +61,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService()).passwordEncoder(new BCryptPasswordEncoder());
     }
 
-    @Bean
+    @Override
+	@Bean
     public UserDetailsService userDetailsService() {
         //获取登录用户信息
-        return new UserDetailsService() {
-            @Override
-            public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-                UmsAdminExample example = new UmsAdminExample();
-                example.createCriteria().andUsernameEqualTo(username);
-                List<UmsAdmin> umsAdminList = umsAdminMapper.selectByExample(example);
-                if (umsAdminList != null && umsAdminList.size() > 0) {
-                    return new AdminUserDetails(umsAdminList.get(0));
-                }
-                throw new UsernameNotFoundException("用户名或密码错误");
-            }
-        };
+        return username -> {
+		    UmsAdminExample example = new UmsAdminExample();
+		    example.createCriteria().andUsernameEqualTo(username);
+		    List<UmsAdmin> umsAdminList = umsAdminMapper.selectByExample(example);
+		    if (umsAdminList != null && umsAdminList.size() > 0) {
+		        return new AdminUserDetails(umsAdminList.get(0));
+		    }
+		    throw new UsernameNotFoundException("用户名或密码错误");
+		};
     }
 }

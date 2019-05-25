@@ -1,12 +1,7 @@
 package com.macro.mall.config;
 
-import com.macro.mall.bo.AdminUserDetails;
-import com.macro.mall.component.JwtAuthenticationTokenFilter;
-import com.macro.mall.component.RestAuthenticationEntryPoint;
-import com.macro.mall.component.RestfulAccessDeniedHandler;
-import com.macro.mall.model.UmsAdmin;
-import com.macro.mall.model.UmsPermission;
-import com.macro.mall.service.UmsAdminService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -28,7 +23,13 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
-import java.util.List;
+import com.macro.mall.bo.AdminUserDetails;
+import com.macro.mall.component.JwtAuthenticationTokenFilter;
+import com.macro.mall.component.RestAuthenticationEntryPoint;
+import com.macro.mall.component.RestfulAccessDeniedHandler;
+import com.macro.mall.model.UmsAdmin;
+import com.macro.mall.model.UmsPermission;
+import com.macro.mall.service.UmsAdminService;
 
 
 /**
@@ -79,8 +80,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity.addFilterBefore(jwtAuthenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class);
         //添加自定义未授权和未登录结果返回
         httpSecurity.exceptionHandling()
-                .accessDeniedHandler(restfulAccessDeniedHandler)
-                .authenticationEntryPoint(restAuthenticationEntryPoint);
+                .accessDeniedHandler(this.restfulAccessDeniedHandler)
+                .authenticationEntryPoint(this.restAuthenticationEntryPoint);
     }
 
     @Override
@@ -94,13 +95,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+    @Override
     @Bean
     public UserDetailsService userDetailsService() {
         //获取登录用户信息
         return username -> {
-            UmsAdmin admin = adminService.getAdminByUsername(username);
+            UmsAdmin admin = this.adminService.getAdminByUsername(username);
             if (admin != null) {
-                List<UmsPermission> permissionList = adminService.getPermissionList(admin.getId());
+                List<UmsPermission> permissionList = this.adminService.getPermissionList(admin.getId());
                 return new AdminUserDetails(admin,permissionList);
             }
             throw new UsernameNotFoundException("用户名或密码错误");
