@@ -7,7 +7,7 @@ mybatis:
     - classpath:dao/*.xml
     - classpath*:com/**/mapper/*.xml
 
-http:
+server:
   port: 8085 # http服务端口
 
 # 自定义redis key
