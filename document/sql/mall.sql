@@ -29,7 +29,7 @@ CREATE TABLE `cms_help` (
   `read_count` int(1) DEFAULT NULL,
   `content` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='帮助表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='帮助表';
 
 -- ----------------------------
 -- Records of cms_help
@@ -47,7 +47,7 @@ CREATE TABLE `cms_help_category` (
   `show_status` int(2) DEFAULT NULL,
   `sort` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='帮助分类表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='帮助分类表';
 
 -- ----------------------------
 -- Records of cms_help_category
@@ -66,7 +66,7 @@ CREATE TABLE `cms_member_report` (
   `report_status` int(1) DEFAULT NULL COMMENT '举报状态：0->未处理；1->已处理',
   `handle_status` int(1) DEFAULT NULL COMMENT '处理结果：0->无效；1->有效；2->恶意',
   `note` varchar(200) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户举报表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户举报表';
 
 -- ----------------------------
 -- Records of cms_member_report
@@ -84,7 +84,7 @@ CREATE TABLE `cms_prefrence_area` (
   `sort` int(11) DEFAULT NULL,
   `show_status` int(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='优选专区';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COMMENT='优选专区';
 
 -- ----------------------------
 -- Records of cms_prefrence_area
@@ -103,7 +103,7 @@ CREATE TABLE `cms_prefrence_area_product_relation` (
   `prefrence_area_id` bigint(20) DEFAULT NULL,
   `product_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COMMENT='优选专区和产品关系表';
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COMMENT='优选专区和产品关系表';
 
 -- ----------------------------
 -- Records of cms_prefrence_area_product_relation
@@ -139,7 +139,7 @@ CREATE TABLE `cms_subject` (
   `forward_count` int(11) DEFAULT NULL COMMENT '转发数',
   `category_name` varchar(200) DEFAULT NULL COMMENT '专题分类名称',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='专题表';
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COMMENT='专题表';
 
 -- ----------------------------
 -- Records of cms_subject
@@ -172,7 +172,7 @@ CREATE TABLE `cms_subject_category` (
   `show_status` int(2) DEFAULT NULL,
   `sort` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='专题分类表';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COMMENT='专题分类表';
 
 -- ----------------------------
 -- Records of cms_subject_category
@@ -196,7 +196,7 @@ CREATE TABLE `cms_subject_comment` (
   `create_time` datetime DEFAULT NULL,
   `show_status` int(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='专题评论表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='专题评论表';
 
 -- ----------------------------
 -- Records of cms_subject_comment
@@ -211,7 +211,7 @@ CREATE TABLE `cms_subject_product_relation` (
   `subject_id` bigint(20) DEFAULT NULL,
   `product_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8 COMMENT='专题商品关系表';
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COMMENT='专题商品关系表';
 
 -- ----------------------------
 -- Records of cms_subject_product_relation
@@ -246,7 +246,7 @@ CREATE TABLE `cms_topic` (
   `attend_type` varchar(100) DEFAULT NULL COMMENT '参与方式',
   `content` text COMMENT '话题内容',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='话题表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='话题表';
 
 -- ----------------------------
 -- Records of cms_topic
@@ -264,7 +264,7 @@ CREATE TABLE `cms_topic_category` (
   `show_status` int(2) DEFAULT NULL,
   `sort` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='话题分类表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='话题分类表';
 
 -- ----------------------------
 -- Records of cms_topic_category
@@ -283,7 +283,7 @@ CREATE TABLE `cms_topic_comment` (
   `create_time` datetime DEFAULT NULL,
   `show_status` int(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='专题评论表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='专题评论表';
 
 -- ----------------------------
 -- Records of cms_topic_comment
@@ -316,7 +316,7 @@ CREATE TABLE `oms_cart_item` (
   `product_sn` varchar(200) DEFAULT NULL,
   `product_attr` varchar(500) DEFAULT NULL COMMENT '商品销售属性:[{"key":"颜色","value":"颜色"},{"key":"容量","value":"4G"}]',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='购物车表';
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COMMENT='购物车表';
 
 -- ----------------------------
 -- Records of oms_cart_item
@@ -343,7 +343,7 @@ CREATE TABLE `oms_company_address` (
   `region` varchar(64) DEFAULT NULL COMMENT '区',
   `detail_address` varchar(200) DEFAULT NULL COMMENT '详细地址',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='公司收发货地址表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COMMENT='公司收发货地址表';
 
 -- ----------------------------
 -- Records of oms_company_address
@@ -402,7 +402,7 @@ CREATE TABLE `oms_order` (
   `comment_time` datetime DEFAULT NULL COMMENT '评价时间',
   `modify_time` datetime DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COMMENT='订单表';
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COMMENT='订单表';
 
 -- ----------------------------
 -- Records of oms_order
@@ -453,7 +453,7 @@ CREATE TABLE `oms_order_item` (
   `gift_growth` int(11) DEFAULT '0',
   `product_attr` varchar(500) DEFAULT NULL COMMENT '商品销售属性:[{"key":"颜色","value":"颜色"},{"key":"容量","value":"4G"}]',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8 COMMENT='订单中所包含的商品';
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COMMENT='订单中所包含的商品';
 
 -- ----------------------------
 -- Records of oms_order_item
@@ -496,7 +496,7 @@ CREATE TABLE `oms_order_operate_history` (
   `order_status` int(1) DEFAULT NULL COMMENT '订单状态：0->待付款；1->待发货；2->已发货；3->已完成；4->已关闭；5->无效订单',
   `note` varchar(500) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COMMENT='订单操作历史记录';
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COMMENT='订单操作历史记录';
 
 -- ----------------------------
 -- Records of oms_order_operate_history
@@ -553,7 +553,7 @@ CREATE TABLE `oms_order_return_apply` (
   `receive_time` datetime DEFAULT NULL COMMENT '收货时间',
   `receive_note` varchar(500) DEFAULT NULL COMMENT '收货备注',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COMMENT='订单退货申请';
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COMMENT='订单退货申请';
 
 -- ----------------------------
 -- Records of oms_order_return_apply
@@ -591,7 +591,7 @@ CREATE TABLE `oms_order_return_reason` (
   `status` int(1) DEFAULT NULL COMMENT '状态：0->不启用；1->启用',
   `create_time` datetime DEFAULT NULL COMMENT '添加时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='退货原因表';
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COMMENT='退货原因表';
 
 -- ----------------------------
 -- Records of oms_order_return_reason
@@ -618,7 +618,7 @@ CREATE TABLE `oms_order_setting` (
   `finish_overtime` int(11) DEFAULT NULL COMMENT '自动完成交易时间，不能申请售后（天）',
   `comment_overtime` int(11) DEFAULT NULL COMMENT '订单完成后自动好评时间（天）',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='订单设置表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COMMENT='订单设置表';
 
 -- ----------------------------
 -- Records of oms_order_setting
@@ -637,7 +637,7 @@ CREATE TABLE `pms_album` (
   `sort` int(11) DEFAULT NULL,
   `description` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='相册表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='相册表';
 
 -- ----------------------------
 -- Records of pms_album
@@ -652,7 +652,7 @@ CREATE TABLE `pms_album_pic` (
   `album_id` bigint(20) DEFAULT NULL,
   `pic` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='画册图片表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='画册图片表';
 
 -- ----------------------------
 -- Records of pms_album_pic
@@ -675,7 +675,7 @@ CREATE TABLE `pms_brand` (
   `big_pic` varchar(255) DEFAULT NULL COMMENT '专区大图',
   `brand_story` text COMMENT '品牌故事',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8 COMMENT='品牌表';
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8mb4 COMMENT='品牌表';
 
 -- ----------------------------
 -- Records of pms_brand
@@ -713,7 +713,7 @@ CREATE TABLE `pms_comment` (
   `member_icon` varchar(255) DEFAULT NULL COMMENT '评论用户头像',
   `replay_count` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='商品评价表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='商品评价表';
 
 -- ----------------------------
 -- Records of pms_comment
@@ -732,7 +732,7 @@ CREATE TABLE `pms_comment_replay` (
   `create_time` datetime DEFAULT NULL,
   `type` int(1) DEFAULT NULL COMMENT '评论人员类型；0->会员；1->管理员',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='产品评价回复表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='产品评价回复表';
 
 -- ----------------------------
 -- Records of pms_comment_replay
@@ -752,7 +752,7 @@ CREATE TABLE `pms_feight_template` (
   `continme_fee` decimal(10,2) DEFAULT NULL,
   `dest` varchar(255) DEFAULT NULL COMMENT '目的地（省、市）',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='运费模版';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='运费模版';
 
 -- ----------------------------
 -- Records of pms_feight_template
@@ -769,7 +769,7 @@ CREATE TABLE `pms_member_price` (
   `member_price` decimal(10,2) DEFAULT NULL COMMENT '会员价格',
   `member_level_name` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=201 DEFAULT CHARSET=utf8 COMMENT='商品会员价格表';
+) ENGINE=InnoDB AUTO_INCREMENT=201 DEFAULT CHARSET=utf8mb4 COMMENT='商品会员价格表';
 
 -- ----------------------------
 -- Records of pms_member_price
@@ -876,7 +876,7 @@ CREATE TABLE `pms_product` (
   `brand_name` varchar(255) DEFAULT NULL COMMENT '品牌名称',
   `product_category_name` varchar(255) DEFAULT NULL COMMENT '商品分类名称',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COMMENT='商品信息';
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COMMENT='商品信息';
 
 -- ----------------------------
 -- Records of pms_product
@@ -929,7 +929,7 @@ CREATE TABLE `pms_product_attribute` (
   `hand_add_status` int(1) DEFAULT NULL COMMENT '是否支持手动新增；0->不支持；1->支持',
   `type` int(1) DEFAULT NULL COMMENT '属性的类型；0->规格；1->参数',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8 COMMENT='商品属性参数表';
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COMMENT='商品属性参数表';
 
 -- ----------------------------
 -- Records of pms_product_attribute
@@ -973,7 +973,7 @@ CREATE TABLE `pms_product_attribute_category` (
   `attribute_count` int(11) DEFAULT '0' COMMENT '属性数量',
   `param_count` int(11) DEFAULT '0' COMMENT '参数数量',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='产品属性分类表';
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COMMENT='产品属性分类表';
 
 -- ----------------------------
 -- Records of pms_product_attribute_category
@@ -996,7 +996,7 @@ CREATE TABLE `pms_product_attribute_value` (
   `product_attribute_id` bigint(20) DEFAULT NULL,
   `value` varchar(64) DEFAULT NULL COMMENT '手动添加规格或参数的值，参数单值，规格有多个时以逗号隔开',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=228 DEFAULT CHARSET=utf8 COMMENT='存储产品参数信息的表';
+) ENGINE=InnoDB AUTO_INCREMENT=228 DEFAULT CHARSET=utf8mb4 COMMENT='存储产品参数信息的表';
 
 -- ----------------------------
 -- Records of pms_product_attribute_value
@@ -1090,7 +1090,7 @@ CREATE TABLE `pms_product_category` (
   `keywords` varchar(255) DEFAULT NULL,
   `description` text COMMENT '描述',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8 COMMENT='产品分类';
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COMMENT='产品分类';
 
 -- ----------------------------
 -- Records of pms_product_category
@@ -1141,7 +1141,7 @@ CREATE TABLE `pms_product_category_attribute_relation` (
   `product_category_id` bigint(20) DEFAULT NULL,
   `product_attribute_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='产品的分类和属性的关系表，用于设置分类筛选条件（只支持一级分类）';
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COMMENT='产品的分类和属性的关系表，用于设置分类筛选条件（只支持一级分类）';
 
 -- ----------------------------
 -- Records of pms_product_category_attribute_relation
@@ -1162,7 +1162,7 @@ CREATE TABLE `pms_product_full_reduction` (
   `full_price` decimal(10,2) DEFAULT NULL,
   `reduce_price` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8 COMMENT='产品满减表(只针对同商品)';
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8mb4 COMMENT='产品满减表(只针对同商品)';
 
 -- ----------------------------
 -- Records of pms_product_full_reduction
@@ -1205,7 +1205,7 @@ CREATE TABLE `pms_product_ladder` (
   `discount` decimal(10,2) DEFAULT NULL COMMENT '折扣',
   `price` decimal(10,2) DEFAULT NULL COMMENT '折后价格',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8 COMMENT='产品阶梯价格表(只针对同商品)';
+) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8mb4 COMMENT='产品阶梯价格表(只针对同商品)';
 
 -- ----------------------------
 -- Records of pms_product_ladder
@@ -1255,7 +1255,7 @@ CREATE TABLE `pms_product_operate_log` (
   `operate_man` varchar(64) DEFAULT NULL COMMENT '操作人',
   `create_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of pms_product_operate_log
@@ -1273,7 +1273,7 @@ CREATE TABLE `pms_product_vertify_record` (
   `status` int(1) DEFAULT NULL,
   `detail` varchar(255) DEFAULT NULL COMMENT '反馈详情',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='商品审核记录';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COMMENT='商品审核记录';
 
 -- ----------------------------
 -- Records of pms_product_vertify_record
@@ -1300,7 +1300,7 @@ CREATE TABLE `pms_sku_stock` (
   `promotion_price` decimal(10,2) DEFAULT NULL COMMENT '单品促销价格',
   `lock_stock` int(11) DEFAULT '0' COMMENT '锁定库存',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=110 DEFAULT CHARSET=utf8 COMMENT='sku的库存';
+) ENGINE=InnoDB AUTO_INCREMENT=110 DEFAULT CHARSET=utf8mb4 COMMENT='sku的库存';
 
 -- ----------------------------
 -- Records of pms_sku_stock
@@ -1363,7 +1363,7 @@ CREATE TABLE `sms_coupon` (
   `code` varchar(64) DEFAULT NULL COMMENT '优惠码',
   `member_level` int(1) DEFAULT NULL COMMENT '可领取的会员类型：0->无限时',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COMMENT='优惠卷表';
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COMMENT='优惠卷表';
 
 -- ----------------------------
 -- Records of sms_coupon
@@ -1400,7 +1400,7 @@ CREATE TABLE `sms_coupon_history` (
   PRIMARY KEY (`id`),
   KEY `idx_member_id` (`member_id`) USING BTREE,
   KEY `idx_coupon_id` (`coupon_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COMMENT='优惠券使用、领取历史表';
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COMMENT='优惠券使用、领取历史表';
 
 -- ----------------------------
 -- Records of sms_coupon_history
@@ -1442,7 +1442,7 @@ CREATE TABLE `sms_coupon_product_category_relation` (
   `product_category_name` varchar(200) DEFAULT NULL COMMENT '产品分类名称',
   `parent_category_name` varchar(200) DEFAULT NULL COMMENT '父分类名称',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='优惠券和产品分类关系表';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COMMENT='优惠券和产品分类关系表';
 
 -- ----------------------------
 -- Records of sms_coupon_product_category_relation
@@ -1460,7 +1460,7 @@ CREATE TABLE `sms_coupon_product_relation` (
   `product_name` varchar(500) DEFAULT NULL COMMENT '商品名称',
   `product_sn` varchar(200) DEFAULT NULL COMMENT '商品编码',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='优惠券和产品的关系表';
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COMMENT='优惠券和产品的关系表';
 
 -- ----------------------------
 -- Records of sms_coupon_product_relation
@@ -1479,7 +1479,7 @@ CREATE TABLE `sms_flash_promotion` (
   `status` int(1) DEFAULT NULL COMMENT '上下线状态',
   `create_time` datetime DEFAULT NULL COMMENT '秒杀时间段名称',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='限时购表';
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COMMENT='限时购表';
 
 -- ----------------------------
 -- Records of sms_flash_promotion
@@ -1507,7 +1507,7 @@ CREATE TABLE `sms_flash_promotion_log` (
   `subscribe_time` datetime DEFAULT NULL COMMENT '会员订阅时间',
   `send_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='限时购通知记录';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='限时购通知记录';
 
 -- ----------------------------
 -- Records of sms_flash_promotion_log
@@ -1527,7 +1527,7 @@ CREATE TABLE `sms_flash_promotion_product_relation` (
   `flash_promotion_limit` int(11) DEFAULT NULL COMMENT '每人限购数量',
   `sort` int(11) DEFAULT NULL COMMENT '排序',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8 COMMENT='商品限时购与商品关系表';
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COMMENT='商品限时购与商品关系表';
 
 -- ----------------------------
 -- Records of sms_flash_promotion_product_relation
@@ -1585,7 +1585,7 @@ CREATE TABLE `sms_flash_promotion_session` (
   `status` int(1) DEFAULT NULL COMMENT '启用状态：0->不启用；1->启用',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='限时购场次表';
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COMMENT='限时购场次表';
 
 -- ----------------------------
 -- Records of sms_flash_promotion_session
@@ -1616,7 +1616,7 @@ CREATE TABLE `sms_home_advertise` (
   `note` varchar(500) DEFAULT NULL COMMENT '备注',
   `sort` int(11) DEFAULT '0' COMMENT '排序',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='首页轮播广告表';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COMMENT='首页轮播广告表';
 
 -- ----------------------------
 -- Records of sms_home_advertise
@@ -1639,7 +1639,7 @@ CREATE TABLE `sms_home_brand` (
   `recommend_status` int(1) DEFAULT NULL,
   `sort` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8 COMMENT='首页推荐品牌表';
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COMMENT='首页推荐品牌表';
 
 -- ----------------------------
 -- Records of sms_home_brand
@@ -1667,7 +1667,7 @@ CREATE TABLE `sms_home_new_product` (
   `recommend_status` int(1) DEFAULT NULL,
   `sort` int(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COMMENT='新鲜好物表';
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COMMENT='新鲜好物表';
 
 -- ----------------------------
 -- Records of sms_home_new_product
@@ -1690,7 +1690,7 @@ CREATE TABLE `sms_home_recommend_product` (
   `recommend_status` int(1) DEFAULT NULL,
   `sort` int(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='人气推荐商品表';
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COMMENT='人气推荐商品表';
 
 -- ----------------------------
 -- Records of sms_home_recommend_product
@@ -1712,7 +1712,7 @@ CREATE TABLE `sms_home_recommend_subject` (
   `recommend_status` int(1) DEFAULT NULL,
   `sort` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COMMENT='首页推荐专题表';
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COMMENT='首页推荐专题表';
 
 -- ----------------------------
 -- Records of sms_home_recommend_subject
@@ -1740,7 +1740,7 @@ CREATE TABLE `ums_admin` (
   `login_time` datetime DEFAULT NULL COMMENT '最后登录时间',
   `status` int(1) DEFAULT '1' COMMENT '帐号启用状态：0->禁用；1->启用',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='后台用户表';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COMMENT='后台用户表';
 
 -- ----------------------------
 -- Records of ums_admin
@@ -1760,7 +1760,7 @@ CREATE TABLE `ums_admin_login_log` (
   `address` varchar(100) DEFAULT NULL,
   `user_agent` varchar(100) DEFAULT NULL COMMENT '浏览器登录类型',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COMMENT='后台用户登录日志表';
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COMMENT='后台用户登录日志表';
 
 -- ----------------------------
 -- Records of ums_admin_login_log
@@ -1789,7 +1789,7 @@ CREATE TABLE `ums_admin_permission_relation` (
   `permission_id` bigint(20) DEFAULT NULL,
   `type` int(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='后台用户和权限关系表(除角色中定义的权限以外的加减权限)';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='后台用户和权限关系表(除角色中定义的权限以外的加减权限)';
 
 -- ----------------------------
 -- Records of ums_admin_permission_relation
@@ -1804,7 +1804,7 @@ CREATE TABLE `ums_admin_role_relation` (
   `admin_id` bigint(20) DEFAULT NULL,
   `role_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='后台用户和角色关系表';
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COMMENT='后台用户和角色关系表';
 
 -- ----------------------------
 -- Records of ums_admin_role_relation
@@ -1827,7 +1827,7 @@ CREATE TABLE `ums_growth_change_history` (
   `operate_note` varchar(200) DEFAULT NULL COMMENT '操作备注',
   `source_type` int(1) DEFAULT NULL COMMENT '积分来源：0->购物；1->管理员修改',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='成长值变化历史记录表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COMMENT='成长值变化历史记录表';
 
 -- ----------------------------
 -- Records of ums_growth_change_history
@@ -1848,7 +1848,7 @@ CREATE TABLE `ums_integration_change_history` (
   `operate_note` varchar(200) DEFAULT NULL COMMENT '操作备注',
   `source_type` int(1) DEFAULT NULL COMMENT '积分来源：0->购物；1->管理员修改',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='积分变化历史记录表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='积分变化历史记录表';
 
 -- ----------------------------
 -- Records of ums_integration_change_history
@@ -1865,7 +1865,7 @@ CREATE TABLE `ums_integration_consume_setting` (
   `use_unit` int(11) DEFAULT NULL COMMENT '每次使用积分最小单位100',
   `coupon_status` int(1) DEFAULT NULL COMMENT '是否可以和优惠券同用；0->不可以；1->可以',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='积分消费设置';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COMMENT='积分消费设置';
 
 -- ----------------------------
 -- Records of ums_integration_consume_setting
@@ -1899,7 +1899,7 @@ CREATE TABLE `ums_member` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_username` (`username`),
   UNIQUE KEY `idx_phone` (`phone`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='会员表';
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COMMENT='会员表';
 
 -- ----------------------------
 -- Records of ums_member
@@ -1932,7 +1932,7 @@ CREATE TABLE `ums_member_level` (
   `priviledge_birthday` int(1) DEFAULT NULL COMMENT '是否有生日特权',
   `note` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='会员等级表';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COMMENT='会员等级表';
 
 -- ----------------------------
 -- Records of ums_member_level
@@ -1955,7 +1955,7 @@ CREATE TABLE `ums_member_login_log` (
   `login_type` int(1) DEFAULT NULL COMMENT '登录类型：0->PC；1->android;2->ios;3->小程序',
   `province` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='会员登录记录';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='会员登录记录';
 
 -- ----------------------------
 -- Records of ums_member_login_log
@@ -1970,7 +1970,7 @@ CREATE TABLE `ums_member_member_tag_relation` (
   `member_id` bigint(20) DEFAULT NULL,
   `tag_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户和标签关系表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户和标签关系表';
 
 -- ----------------------------
 -- Records of ums_member_member_tag_relation
@@ -1985,7 +1985,7 @@ CREATE TABLE `ums_member_product_category_relation` (
   `member_id` bigint(20) DEFAULT NULL,
   `product_category_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='会员与产品分类关系表（用户喜欢的分类）';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='会员与产品分类关系表（用户喜欢的分类）';
 
 -- ----------------------------
 -- Records of ums_member_product_category_relation
@@ -2007,7 +2007,7 @@ CREATE TABLE `ums_member_receive_address` (
   `region` varchar(100) DEFAULT NULL COMMENT '区',
   `detail_address` varchar(128) DEFAULT NULL COMMENT '详细地址(街道)',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='会员收货地址表';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COMMENT='会员收货地址表';
 
 -- ----------------------------
 -- Records of ums_member_receive_address
@@ -2029,7 +2029,7 @@ CREATE TABLE `ums_member_rule_setting` (
   `max_point_per_order` int(11) DEFAULT NULL COMMENT '每笔订单最高获取点数',
   `type` int(1) DEFAULT NULL COMMENT '类型：0->积分规则；1->成长值规则',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='会员积分成长规则表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='会员积分成长规则表';
 
 -- ----------------------------
 -- Records of ums_member_rule_setting
@@ -2057,7 +2057,7 @@ CREATE TABLE `ums_member_statistics_info` (
   `invite_friend_count` int(11) DEFAULT NULL,
   `recent_order_time` datetime DEFAULT NULL COMMENT '最后一次下订单时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='会员统计信息';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='会员统计信息';
 
 -- ----------------------------
 -- Records of ums_member_statistics_info
@@ -2073,7 +2073,7 @@ CREATE TABLE `ums_member_tag` (
   `finish_order_count` int(11) DEFAULT NULL COMMENT '自动打标签完成订单数量',
   `finish_order_amount` decimal(10,2) DEFAULT NULL COMMENT '自动打标签完成订单金额',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户标签表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户标签表';
 
 -- ----------------------------
 -- Records of ums_member_tag
@@ -2090,7 +2090,7 @@ CREATE TABLE `ums_member_task` (
   `intergration` int(11) DEFAULT NULL COMMENT '赠送积分',
   `type` int(1) DEFAULT NULL COMMENT '任务类型：0->新手任务；1->日常任务',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='会员任务表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='会员任务表';
 
 -- ----------------------------
 -- Records of ums_member_task
@@ -2112,7 +2112,7 @@ CREATE TABLE `ums_permission` (
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `sort` int(11) DEFAULT NULL COMMENT '排序',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COMMENT='后台用户权限表';
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COMMENT='后台用户权限表';
 
 -- ----------------------------
 -- Records of ums_permission
@@ -2149,7 +2149,7 @@ CREATE TABLE `ums_role` (
   `status` int(1) DEFAULT '1' COMMENT '启用状态：0->禁用；1->启用',
   `sort` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='后台用户角色表';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COMMENT='后台用户角色表';
 
 -- ----------------------------
 -- Records of ums_role
@@ -2168,7 +2168,7 @@ CREATE TABLE `ums_role_permission_relation` (
   `role_id` bigint(20) DEFAULT NULL,
   `permission_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COMMENT='后台用户角色和权限关系表';
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COMMENT='后台用户角色和权限关系表';
 
 -- ----------------------------
 -- Records of ums_role_permission_relation
